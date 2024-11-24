@@ -7,8 +7,4 @@ export class CreateDinosourDto {
   weight: string;
   habitat: string;
   characteristics: string;
-  behavior: string;
-  curiosities: string;
-  recentDiscoveries: string;
-  popCulture: string;
 }
