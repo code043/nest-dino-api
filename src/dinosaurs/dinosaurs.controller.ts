@@ -17,7 +17,7 @@ export class DinosaursController {
   constructor(private readonly dinosaursService: DinosaursService) {}
 
   @Get()
-  getNinjas(@Query('diet') diet: 'carnívoro' | 'herbivoro') {
+  getDinosaurs(@Query('diet') diet: 'carnívoro' | 'herbivoro') {
     return this.dinosaursService.getDinosaurs(diet);
   }
   @Get(':id')

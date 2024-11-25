@@ -19,8 +19,15 @@ export class DinosaursService {
   ];
   getDinosaurs(diet?: 'carnívoro' | 'herbivoro') {
     if (diet) {
-      return this.dinosaurs.filter((dinosaur) => dinosaur.diet === diet);
+      return this.dinosaurs.filter((dino) => dino.diet === diet);
     }
     return this.dinosaurs;
+  }
+  getDinosaur(id: number) {
+    const dinosaur = this.dinosaurs.find((dino) => dino.id === id);
+    if (!dinosaur) {
+      throw new Error('Dinosaur not found');
+    }
+    return dinosaur;
   }
 }
