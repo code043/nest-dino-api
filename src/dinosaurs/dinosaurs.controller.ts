@@ -8,7 +8,7 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
-import { CreateDinosourDto } from './dto/create-dinosaur.dto';
+import { CreateDinosaurDto } from './dto/create-dinosaur.dto';
 import { UpdateDinosaurDto } from './dto/update-dinosaur.dto';
 import { DinosaursService } from './dinosaurs.service';
 
@@ -25,7 +25,7 @@ export class DinosaursController {
     return { id };
   }
   @Post()
-  createDinosaur(@Body() createDino: CreateDinosourDto) {
+  createDinosaur(@Body() createDino: CreateDinosaurDto) {
     return {
       name: createDino.name,
     };

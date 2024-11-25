@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { CreateDinosaurDto } from './dto/create-dinosaur.dto';
 
 @Injectable()
 export class DinosaursService {
@@ -29,5 +30,13 @@ export class DinosaursService {
       throw new Error('Dinosaur not found');
     }
     return dinosaur;
+  }
+  createDinosaur(createDinosaurDto: CreateDinosaurDto) {
+    const newDino = {
+      ...createDinosaurDto,
+      id: Date.now(),
+    };
+    this.dinosaurs.push(newDino);
+    return newDino;
   }
 }

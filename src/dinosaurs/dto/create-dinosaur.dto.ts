@@ -1,4 +1,4 @@
-export class CreateDinosourDto {
+export class CreateDinosaurDto {
   name: string;
   image: string;
   period: string;
