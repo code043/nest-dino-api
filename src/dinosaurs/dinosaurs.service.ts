@@ -49,4 +49,9 @@ export class DinosaursService {
     });
     return this.getDinosaur(Number(id));
   }
+  removeDinosaur(id: number) {
+    const toBeRemoved = this.getDinosaur(id);
+    this.dinosaurs = this.dinosaurs.filter((dino) => dino.id !== id);
+    return toBeRemoved;
+  }
 }

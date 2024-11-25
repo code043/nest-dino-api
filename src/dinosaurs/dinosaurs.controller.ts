@@ -7,6 +7,7 @@ import {
   Delete,
   Put,
   Query,
+  NotFoundException,
 } from '@nestjs/common';
 import { CreateDinosaurDto } from './dto/create-dinosaur.dto';
 import { UpdateDinosaurDto } from './dto/update-dinosaur.dto';
@@ -22,26 +23,26 @@ export class DinosaursController {
   }
   @Get(':id')
   getOneDinosaur(@Param('id') id: string) {
-    return { id };
+    try {
+      return this.dinosaursService.getDinosaur(Number(id));
+    } catch (err: any) {
+      console.log(err);
+      throw new NotFoundException();
+    }
   }
   @Post()
   createDinosaur(@Body() createDino: CreateDinosaurDto) {
-    return {
-      name: createDino.name,
-    };
+    return this.dinosaursService.createDinosaur(createDino);
   }
   @Put(':id')
   updateDinosaur(
     @Param('id') id: string,
     @Body() updateDinosaurDto: UpdateDinosaurDto,
   ) {
-    return {
-      id,
-      name: updateDinosaurDto,
-    };
+    return this.dinosaursService.updateDinosaur(Number(id), updateDinosaurDto);
   }
   @Delete(':id')
   removeDinosaur(@Param('id') id: string) {
-    return { id };
+    return this.dinosaursService.removeDinosaur(Number(id));
   }
 }
