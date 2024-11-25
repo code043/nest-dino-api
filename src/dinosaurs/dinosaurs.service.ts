@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CreateDinosaurDto } from './dto/create-dinosaur.dto';
+import { UpdateDinosaurDto } from './dto/update-dinosaur.dto';
 
 @Injectable()
 export class DinosaursService {
@@ -38,5 +39,14 @@ export class DinosaursService {
     };
     this.dinosaurs.push(newDino);
     return newDino;
+  }
+  updateDinosaur(id: number, updateDinosaurDto: UpdateDinosaurDto) {
+    this.dinosaurs = this.dinosaurs.map((dino) => {
+      if (dino.id === id) {
+        return { ...dino, ...updateDinosaurDto };
+      }
+      return dino;
+    });
+    return this.getDinosaur(Number(id));
   }
 }
